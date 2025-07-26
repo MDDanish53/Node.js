@@ -1,0 +1,74 @@
+<%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+  <main class="min-h-screen flex justify-center items-center bg-gradient-to-br from-pink-100 via-white to-red-100">
+  <form 
+    action="/host/add-home" 
+    method="POST" 
+    class="w-full max-w-lg bg-white/80 rounded-3xl shadow-2xl flex flex-col items-center gap-6 p-8 animate-fade-in-up transition-all duration-700"
+  >
+    <h2 class="font-bold font-sans text-2xl md:text-3xl text-red-600 mb-2 animate-fade-in-down text-center">
+      Register Your Home on Airbnb
+    </h2>
+    <input 
+      type="text" 
+      name="houseName" 
+      placeholder="Enter House Name" 
+      class="w-full md:w-4/5 bg-gray-100 p-3 rounded-lg shadow focus:border-red-400 focus:ring-2 focus:ring-red-200 focus:outline-none transition-all duration-300"
+      required
+    />
+    <input 
+      type="text" 
+      name="pricePerNight" 
+      placeholder="Price Per Night" 
+      class="w-full md:w-4/5 bg-gray-100 p-3 rounded-lg shadow focus:border-red-400 focus:ring-2 focus:ring-red-200 focus:outline-none transition-all duration-300"
+      required
+    />
+    <input 
+      type="text" 
+      name="location" 
+      placeholder="Enter Location" 
+      class="w-full md:w-4/5 bg-gray-100 p-3 rounded-lg shadow focus:border-red-400 focus:ring-2 focus:ring-red-200 focus:outline-none transition-all duration-300"
+      required
+    />
+     <input 
+      type="text" 
+      name="rating" 
+      placeholder="Enter Rating" 
+      class="w-full md:w-4/5 bg-gray-100 p-3 rounded-lg shadow focus:border-red-400 focus:ring-2 focus:ring-red-200 focus:outline-none transition-all duration-300"
+      required
+    />
+     <input 
+      type="text" 
+      name="photoUrl" 
+      placeholder="Enter Photo URL" 
+      class="w-full md:w-4/5 bg-gray-100 p-3 rounded-lg shadow focus:border-red-400 focus:ring-2 focus:ring-red-200 focus:outline-none transition-all duration-300"
+      required
+    />
+    <input 
+      type="submit" 
+      value="Submit" 
+      class="w-2/3 md:w-1/2 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold p-3 rounded-xl shadow-lg hover:scale-105 hover:from-pink-500 hover:to-red-500 transition-all duration-300 cursor-pointer"
+    />
+  </form>
+</main>
+
+<style>
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-30px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.7s cubic-bezier(.4,0,.2,1) both;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(.4,0,.2,1) both;
+}
+</style>
+  </body>
+</html>

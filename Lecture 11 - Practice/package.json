@@ -1,0 +1,21 @@
+{
+  "name": "lecture-11---practice",
+  "version": "1.0.0",
+  "description": "Practice Time",
+  "license": "ISC",
+  "author": "Mohammad Danish",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,89 @@
+ <%- include('../partials/head') %>
+ </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="min-h-screen bg-gradient-to-br from-pink-100 via-white to-red-100 py-10">
+      <h1>Favourites - </h1>
+  <div class="container mx-auto px-4">
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <% registeredHomes.forEach(home => { %>
+        <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 animate-fade-in-up">
+          <div class="w-full aspect-[4/3] bg-gray-200 overflow-hidden">
+            <img 
+              src="<%= home.photoUrl %>" 
+              alt="<%= home.houseName %>" 
+              class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
+              loading="lazy"
+           />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-xl font-bold text-red-600 mb-1 truncate"><%= home.houseName %></h3>
+            <div class="flex items-center text-gray-600 text-sm mb-2">
+              <svg class="w-4 h-4 mr-1 text-red-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 016 6c0 5.25-6 10-6 10S4 13.25 4 8a6 6 0 016-6zm0 8a2 2 0 100-4 2 2 0 000 4z"/></svg>
+              <span><%= home.location %></span>
+            </div>
+            <div class="flex items-center justify-between mt-auto">
+              <span class="text-lg font-semibold text-gray-800">Rs. <%= home.pricePerNight %> <span class="text-sm font-normal text-gray-500">/ night</span></span>
+              <span class="flex items-center text-yellow-500 font-semibold">
+                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.38-2.454a1 1 0 00-1.175 0l-3.38 2.454c-.784.57-1.838-.196-1.539-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.05 9.394c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                <%= home.rating %>
+              </span>
+            </div>
+            <button class="bg-red-500 p-2 w-[30%] mt-1 rounded-md hover:bg-red-600">Book</button>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</main>
+
+<style>
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(.4,0,.2,1) both;
+}
+      @keyframes fade-in-down {
+        0% {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fade-in-up {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slide-in-right {
+        0% {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      .animate-fade-in-down {
+        animation: fade-in-down 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      .animate-slide-in-right {
+        animation: slide-in-right 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+    </style>
+  </body>
+</html>

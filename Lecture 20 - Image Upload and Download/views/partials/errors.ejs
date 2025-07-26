@@ -1,0 +1,29 @@
+<% if (typeof errors != 'undefined' && errors && errors.length > 0) { %>
+  <div id="errorMessage" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 max-w-md mx-auto">
+    <div
+      class="flex items-start gap-3 rounded-md bg-red-50 border border-red-200 px-4 py-3 shadow-lg text-red-800 font-medium animate-slide-fade-in"
+      role="alert"
+    >
+      <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 8v4m0 4h.01" />
+      </svg>
+      <div>
+        <span class="block">
+          <strong>Error:</strong>
+          <ul class="list-disc ml-5">
+            <% errors.forEach((error) => { %>
+              <li><%= error %></li>
+            <% }) %>
+          </ul>
+        </span>
+      </div>
+      <button onclick="closeError()" class="ml-2 text-red-400 hover:text-red-600 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <% } %>
+  

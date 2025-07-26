@@ -1,0 +1,108 @@
+<header
+  class="bg-gradient-to-r from-red-500 to-pink-500 text-white p-4 shadow-lg sticky top-0 z-10"
+>
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          href="/"
+          class="<%= currentPage === 'index' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >airbnb</a
+        >
+      </li>
+      <% if(isLoggedIn) { %>
+      <li>
+        <a
+          href="/homes"
+          class="<%= currentPage === 'home' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >Homes-List</a
+        >
+      </li>
+      <li>
+        <a
+          href="/bookings"
+          class="<%= currentPage === 'bookings' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >Bookings</a
+        >
+      </li>
+      <li>
+        <a
+          href="/favourites"
+          class="<%= currentPage === 'favourites' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >Favourites</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/add-home"
+          class="<%= currentPage === 'addHome' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >Add Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/host-home-list"
+          class="<%= currentPage === 'host-homes' ? 'text-red-500 bg-white' : 'hover:text-red-500' %> hover:bg-white py-2 px-4 rounded transition duration-300 font-semibold"
+          >Host Homes</a
+        >
+      </li>
+      <% } %>
+    </ul>
+    <!-- Login Button -->
+    <% if(!isLoggedIn) { %>
+    <div class="ml-4 flex-shrink-0">
+      <a
+        href="/login"
+        class="relative inline-block px-6 py-2 bg-white text-red-500 font-bold rounded-lg shadow transition-all duration-300 hover:bg-red-500 hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 animate-fade-in-right"
+      >
+        <span class="inline-block align-middle">Login</span>
+        <svg
+          class="w-5 h-5 inline-block ml-2 align-middle transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <% } else { %>
+    <div class="ml-4 flex-shrink-0">
+      <form action="/logout" method="POST">
+        <button
+          type="submit"
+          class="relative px-6 py-2 bg-white text-red-500 font-bold rounded-lg shadow transition-all duration-300 hover:bg-red-500 hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300 animate-fade-in-right flex items-center group"
+        >
+          <span class="inline-block align-middle">Logout</span>
+          <svg
+            class="w-5 h-5 inline-block ml-2 align-middle transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+      </form>
+    </div>
+    <% } %>
+  </nav>
+</header>
+
+<style>
+  @keyframes fade-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .animate-fade-in-right {
+    animation: fade-in-right 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+</style>

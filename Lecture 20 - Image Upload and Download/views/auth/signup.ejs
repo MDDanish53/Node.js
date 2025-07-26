@@ -1,0 +1,168 @@
+<%- include('../partials/head') %>
+<style>
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(30px);}
+        100% { opacity: 1; transform: translateY(0);}
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.5);}
+        50% { box-shadow: 0 0 20px 4px rgba(236, 72, 153, 0.3);}
+      }
+      .animate-glow {
+        animation: glow 2s infinite;
+      }
+      @keyframes slide-fade-in {
+        0% {
+          opacity: 0;
+          transform: translateY(-18px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-slide-fade-in {
+        animation: slide-fade-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pink-200 via-white to-red-100">
+  <%- include('../partials/header') %>
+  <%- include('../partials/errors') %>
+  <div class="min-h-[85vh] flex items-center justify-center py-12">
+    <div class="w-full max-w-4xl bg-white/90 rounded-3xl shadow-2xl p-10 animate-fade-in-up">
+      <h2
+        class="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-pink-500 to-red-400 mb-10 animate-glow p-3 rounded-xl"
+      >
+        Register
+      </h2>
+      <form action="/signup" method="POST" class="flex flex-col gap-8">
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <label for="firstName" class="block text-gray-700 font-semibold mb-2">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value = "<%= oldInput.firstName ? oldInput.firstName : '' %>"
+              required
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+              placeholder="First Name"
+            />
+          </div>
+          <div>
+            <label for="lastName" class="block text-gray-700 font-semibold mb-2">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value = "<%= oldInput.lastName? oldInput.lastName : '' %>"
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+              placeholder="Last Name"
+            />
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value = "<%= oldInput.email ? oldInput.email : '' %>"
+              required
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div>
+            <label for="userType" class="block text-gray-700 font-semibold mb-2">User Type</label>
+            <select
+              id="userType"
+              name="userType"
+              required
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+            >
+              <option value="" disabled <% if(!oldInput && !oldInput.userType) { %> Selected <% } %> >Select user type</option>
+              <option value="guest" <% if(oldInput && oldInput.userType === "guest") { %> Selected <% } %> >Guest</option>
+              <option value="host" <% if(oldInput && oldInput.userType === "host") { %> Selected <% } %> >Host</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+              placeholder="Password"
+            />
+          </div>
+          <div>
+            <label for="confirmPassword" class="block text-gray-700 font-semibold mb-2">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+              class="w-full px-3 py-2 rounded-lg bg-gray-100 border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 focus:outline-none transition-all duration-300 shadow"
+              placeholder="Confirm Password"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center mt-4">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+            class="h-4 w-4 text-pink-500 border-gray-300 rounded focus:ring-pink-400 transition-all duration-300"
+          />
+          <label for="terms" class="ml-2 block text-gray-700 text-sm">
+            I agree to the <a href="/terms" class="text-pink-500 hover:underline">Terms and Conditions</a>
+          </label>
+        </div>
+        <button
+          type="submit"
+          class="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 text-white font-bold text-lg shadow-lg hover:scale-105 hover:from-pink-500 hover:to-red-500 transition-all duration-300 animate-fade-in-up"
+        >
+          Register
+        </button>
+      </form>
+      <p class="mt-6 text-center text-gray-500 text-sm">
+        Already have an account?
+        <a href="/login" class="text-pink-500 font-semibold hover:underline transition">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function closeError() {
+      document.getElementById('errorMessage').style.display = 'none';
+    }
+    
+    <% if (typeof errors != 'undefined' && errors && errors.length > 0) { %>
+    // Auto-hide error after 5 seconds (only if errors exist)
+    setTimeout(() => {
+      const errorMsg = document.getElementById('errorMessage');
+      if (errorMsg) {
+        errorMsg.style.opacity = '0';
+        errorMsg.style.transform = 'translate(-50%, -20px)';
+        setTimeout(() => {
+          errorMsg.style.display = 'none';
+        }, 300);
+      }
+    }, 5000);
+    <% } %>
+  </script>
+</body>
+</html>
