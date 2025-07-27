@@ -7,7 +7,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 //Mongo cluster url
 const DB_PATH =
-  "mongodb+srv://root:root@cluster0.zuna3ft.mongodb.net/airbnb?retryWrites=true&w=majority&appName=Cluster0";
+  "database_url";
 
 // Local Module (Route)
 const storeRouter = require("./routes/storeRouter");

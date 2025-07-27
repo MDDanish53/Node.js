@@ -8,7 +8,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 //Mongo cluster url
 const DB_PATH =
-  "mongodb+srv://root:root@cluster0.zuna3ft.mongodb.net/todo?retryWrites=true&w=majority&appName=Cluster0";
+  "database_url";
 const errorController = require("./controllers/error");
 const todoItemsRouter = require("./routes/todoItemsRouter");
 

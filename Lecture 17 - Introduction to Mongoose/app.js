@@ -37,7 +37,7 @@ app.use(errorController.error);
 const port = 3000;
 //Mongo cluster url
 const DB_PATH =
-  "mongodb+srv://root:root@cluster0.zuna3ft.mongodb.net/airbnb?retryWrites=true&w=majority&appName=Cluster0";
+  "database_url";
 
 mongoose
   .connect(DB_PATH)
